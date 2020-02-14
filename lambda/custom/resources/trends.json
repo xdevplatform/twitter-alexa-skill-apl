@@ -1,0 +1,103 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "settings": {},
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-viewport-profiles",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [],
+  "styles": {},
+  "onMount": [],
+  "graphics": {},
+  "commands": {},
+  "layouts": {},
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "when": "${@viewportProfile == @hubLandscapeSmall}",
+        "type": "Frame",
+        "backgroundColor": "#60A9DE",
+        "width": "100vw",
+        "height": "100vh",
+        "items": [
+          {
+            "type": "Container",
+            "width": "100vw",
+            "height": "100vh",
+            "items": [
+              {
+                "type": "Image",
+                "source": "https://trend-hero.s3.amazonaws.com/twitter-512.png",
+                "width": "170vw",
+                "height": "15vh",
+                "top": "10vh",
+                "scale": "best-fit",
+                "align": "center",
+                "position": "absolute"
+              },
+              {
+                "type": "Container",
+                "direction": "row",
+                "paddingLeft": 40,
+                "paddingRight": 72,
+                "grow": 1,
+                "items": [
+                  {
+                    "type": "ScrollView",
+                    "height": "100vh",
+                    "top": "10vh",
+                    "left": "5vh",
+                    "shrink": 1,
+                    "item": [
+                      {
+                        "type": "Container",
+                        "items": [
+                          {
+                            "type": "Text",
+                            "text": "${payload.data.location}"
+                          },
+                          {
+                            "type": "Text",
+                            "text": "${payload.data.firstTrend}",
+                            "paddingTop": 30
+                          },
+                          {
+                            "type": "Text",
+                            "text": "${payload.data.secondTrend}",
+                            "paddingTop": 20
+                          },
+                          {
+                            "type": "Text",
+                            "text": "${payload.data.thirdTrend}",
+                            "paddingTop": 20
+                          },
+                          {
+                            "type": "Text",
+                            "text": "${payload.data.fourthTrend}",
+                            "paddingTop": 20
+                          },
+                          {
+                            "type": "Text",
+                            "text": "${payload.data.fifthTrend}",
+                            "paddingTop": 20
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

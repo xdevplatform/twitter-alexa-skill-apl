@@ -1,0 +1,50 @@
+{
+  "firstTweet": {
+    "text": "Tweet Text",
+    "name": "User Name",
+    "handle": "@handle",
+    "imageUrl": "imageUrl",
+    "properties": {
+      "tweetSsml": "<speak>Tweet Text</speak>"
+    },
+    "transformers": [
+      {
+        "inputPath": "tweetSsml",
+        "outputName": "firstTweetAsSpeech",
+        "transformer": "ssmlToSpeech"
+      }
+    ]
+  },
+  "secondTweet": {
+    "text": "Tweet Text",
+    "name": "User Name",
+    "handle": "@handle",
+    "imageUrl": "imageUrl",
+    "properties": {
+      "tweetSsml": "<speak>Tweet Text</speak>"
+    },
+    "transformers": [
+      {
+        "inputPath": "tweetSsml",
+        "outputName": "secondTweetAsSpeech",
+        "transformer": "ssmlToSpeech"
+      }
+    ]
+  },
+  "thirdTweet": {
+    "text": "Tweet Text",
+    "name": "User Name",
+    "handle": "@handle",
+    "imageUrl": "imageUrl",
+    "properties": {
+      "tweetSsml": "<speak>Tweet Text</speak>"
+    },
+    "transformers": [
+      {
+        "inputPath": "tweetSsml",
+        "outputName": "thirdTweetAsSpeech",
+        "transformer": "ssmlToSpeech"
+      }
+    ]
+  }
+}

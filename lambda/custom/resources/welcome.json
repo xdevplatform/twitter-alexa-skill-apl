@@ -1,0 +1,46 @@
+{
+  "type": "APL",
+  "version": "1.1",
+  "settings": {},
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-viewport-profiles",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [],
+  "styles": {},
+  "onMount": [],
+  "graphics": {},
+  "commands": {},
+  "layouts": {},
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "when": "${@viewportProfile == @hubLandscapeSmall}",
+        "type": "Container",
+        "items": [
+          {
+            "type": "Frame",
+            "backgroundColor": "#60A9DE",
+            "width": "100vw",
+            "height": "100vh"
+          },
+          {
+            "type": "Image",
+            "source": "https://trend-hero.s3.amazonaws.com/twitter-512.png",
+            "scale": "best-fit",
+            "top": "25vh",
+            "width": "100vw",
+            "height": "40vh",
+            "position": "absolute"
+          }
+        ]
+      }
+    ]
+  }
+}

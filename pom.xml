@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>twitter-alexa-sample</groupId>
+    <artifactId>tweet-buddy</artifactId>
+    <version>1.0</version>
+    <name>tweet-buddy</name>
+    <description>Sample Alexa Skill that showcases the various Twitter APIs</description>
+
+    <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.amazon.alexa/ask-sdk -->
+        <dependency>
+            <groupId>com.amazon.alexa</groupId>
+            <artifactId>ask-sdk</artifactId>
+            <version>2.27.1</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/org.twitter4j/twitter4j-core -->
+        <dependency>
+            <groupId>org.twitter4j</groupId>
+            <artifactId>twitter4j-core</artifactId>
+            <version>4.0.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/commons-io/commons-io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.5</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <sourceDirectory>lambda/custom</sourceDirectory>
+        <resources>
+            <resource>
+                <directory>lambda/custom/resources</directory>
+            </resource>
+        </resources>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.7.0</version>
+                    <configuration>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+
+</project>

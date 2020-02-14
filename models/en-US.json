@@ -1,0 +1,169 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "tweet buddy",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.NavigateHomeIntent",
+          "samples": []
+        },
+        {
+          "name": "TrendIntent",
+          "slots": [
+            {
+              "name": "City",
+              "type": "AMAZON.City"
+            }
+          ],
+          "samples": [
+            "what is going on in {City}",
+            "what is trending in {City}",
+            "what's going on in {City}",
+            "whats going on in {City}",
+            "whats trending in {City}",
+            "what's trending in {City}"
+          ]
+        },
+        {
+          "name": "TweetIntent",
+          "slots": [
+            {
+              "name": "SearchTerm",
+              "type": "SearchTerm"
+            }
+          ],
+          "samples": [
+            "tell me tweets about {SearchTerm}",
+            "read some tweets about {SearchTerm}",
+            "give me some tweets about {SearchTerm}",
+            "give me tweets about {SearchTerm}",
+            "tell me about {SearchTerm}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "SearchTerm",
+          "values": [
+            {
+              "name": {
+                "value": "monday motivation"
+              }
+            },
+            {
+              "name": {
+                "value": "mandalorian"
+              }
+            },
+            {
+              "name": {
+                "value": "caturday"
+              }
+            },
+            {
+              "name": {
+                "value": "seattle seahawks"
+              }
+            },
+            {
+              "name": {
+                "value": "baltimore ravens"
+              }
+            },
+            {
+              "name": {
+                "value": "uswnt"
+              }
+            },
+            {
+              "name": {
+                "value": "usmnt"
+              }
+            },
+            {
+              "name": {
+                "value": "kobe bryant"
+              }
+            },
+            {
+              "name": {
+                "value": "lamar jackson"
+              }
+            },
+            {
+              "name": {
+                "value": "lebron james"
+              }
+            },
+            {
+              "name": {
+                "value": "redskins"
+              }
+            },
+            {
+              "name": {
+                "value": "seahawks"
+              }
+            },
+            {
+              "name": {
+                "value": "ravens"
+              }
+            },
+            {
+              "name": {
+                "value": "khabib"
+              }
+            },
+            {
+              "name": {
+                "value": "ufc"
+              }
+            },
+            {
+              "name": {
+                "value": "seattle"
+              }
+            },
+            {
+              "name": {
+                "value": "bellevue"
+              }
+            },
+            {
+              "name": {
+                "value": "mumbai indians"
+              }
+            },
+            {
+              "name": {
+                "value": "democratic debate"
+              }
+            },
+            {
+              "name": {
+                "value": "dem debate"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

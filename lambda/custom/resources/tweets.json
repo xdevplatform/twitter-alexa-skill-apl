@@ -1,0 +1,220 @@
+{
+  "type": "APL",
+  "version": "1.0",
+  "settings": {},
+  "theme": "dark",
+  "import": [
+    {
+      "name": "alexa-viewport-profiles",
+      "version": "1.1.0"
+    }
+  ],
+  "resources": [],
+  "styles": {},
+  "layouts": {},
+  "mainTemplate": {
+    "parameters": [
+      "payload"
+    ],
+    "items": [
+      {
+        "when": "${@viewportProfile == @hubLandscapeSmall}",
+        "type": "Pager",
+        "width": "100vw",
+        "height": "100vh",
+        "id": "pagerId",
+        "items": [
+          {
+            "type": "Frame",
+            "backgroundColor": "#60A9DE",
+            "width": "100vw",
+            "height": "100vh",
+            "items": [
+              {
+                "type": "Container",
+                "width": "100vw",
+                "height": "100vh",
+                "direction": "column",
+                "items": [
+                  {
+                    "type": "Image",
+                    "source": "${payload.firstTweet.imageUrl}",
+                    "width": "20vw",
+                    "height": "20vh",
+                    "top": "10vh",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "position": "absolute",
+                    "borderRadius": 100
+                  },
+                  {
+                    "type": "Image",
+                    "source": "https://trend-hero.s3.amazonaws.com/twitter-512.png",
+                    "width": "170vw",
+                    "height": "15vh",
+                    "top": "10vh",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "position": "absolute"
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.firstTweet.name}",
+                    "fontSize": 36,
+                    "color": "white",
+                    "paddingLeft": 160,
+                    "paddingTop": 45
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.firstTweet.handle}",
+                    "fontSize": 24,
+                    "color": "white",
+                    "paddingLeft": 160
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.firstTweet.text}",
+                    "paddingTop": 70,
+                    "paddingLeft": 50,
+                    "paddingRight": 50,
+                    "fontSize": 32,
+                    "color": "white",
+                    "id": "tweet1",
+                    "speech": "${payload.firstTweet.properties.firstTweetAsSpeech}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Frame",
+            "backgroundColor": "#60A9DE",
+            "width": "100vw",
+            "height": "100vh",
+            "items": [
+              {
+                "type": "Container",
+                "width": "100vw",
+                "height": "100vh",
+                "direction": "column",
+                "items": [
+                  {
+                    "type": "Image",
+                    "source": "${payload.secondTweet.imageUrl}",
+                    "width": "20vw",
+                    "height": "20vh",
+                    "top": "10vh",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "position": "absolute",
+                    "borderRadius": 100
+                  },
+                  {
+                    "type": "Image",
+                    "source": "https://trend-hero.s3.amazonaws.com/twitter-512.png",
+                    "width": "170vw",
+                    "height": "15vh",
+                    "top": "10vh",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "position": "absolute"
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.secondTweet.name}",
+                    "fontSize": 36,
+                    "color": "white",
+                    "paddingLeft": 160,
+                    "paddingTop": 45
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.secondTweet.handle}",
+                    "fontSize": 24,
+                    "color": "white",
+                    "paddingLeft": 160
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.secondTweet.text}",
+                    "paddingTop": 70,
+                    "paddingLeft": 50,
+                    "paddingRight": 50,
+                    "fontSize": 32,
+                    "color": "white",
+                    "id": "tweet2",
+                    "speech": "${payload.secondTweet.properties.secondTweetAsSpeech}"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "type": "Frame",
+            "backgroundColor": "#60A9DE",
+            "width": "100vw",
+            "height": "100vh",
+            "items": [
+              {
+                "type": "Container",
+                "width": "100vw",
+                "height": "100vh",
+                "direction": "column",
+                "items": [
+                  {
+                    "type": "Image",
+                    "source": "${payload.thirdTweet.imageUrl}",
+                    "width": "20vw",
+                    "height": "20vh",
+                    "top": "10vh",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "position": "absolute",
+                    "borderRadius": 100
+                  },
+                  {
+                    "type": "Image",
+                    "source": "https://trend-hero.s3.amazonaws.com/twitter-512.png",
+                    "width": "170vw",
+                    "height": "15vh",
+                    "top": "10vh",
+                    "scale": "best-fit",
+                    "align": "center",
+                    "position": "absolute"
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.thirdTweet.name}",
+                    "fontSize": 36,
+                    "color": "white",
+                    "paddingLeft": 160,
+                    "paddingTop": 45
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.thirdTweet.handle}",
+                    "fontSize": 24,
+                    "color": "white",
+                    "paddingLeft": 160
+                  },
+                  {
+                    "type": "Text",
+                    "text": "${payload.thirdTweet.text}",
+                    "paddingTop": 70,
+                    "paddingLeft": 50,
+                    "paddingRight": 50,
+                    "fontSize": 32,
+                    "color": "white",
+                    "id": "tweet3",
+                    "speech": "${payload.thirdTweet.properties.thirdTweetAsSpeech}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
