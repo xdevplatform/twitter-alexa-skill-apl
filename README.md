@@ -38,3 +38,5 @@ This skill demonstrates:
     User: "Alexa, open Tweet Buddy"
     User: "What's Trending in Seattle"
     User: "Give me Tweets about Lamar Jackson"
+
+Read more in the [tutorial on DEV.to](https://dev.to/twitterdev/building-an-alexa-skill-for-twitter-using-alexa-presentation-language-1aj0)
