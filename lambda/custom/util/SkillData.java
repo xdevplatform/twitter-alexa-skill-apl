@@ -25,7 +25,7 @@ public class SkillData {
 
   public static final Map<String, Integer> LOCATION_MAP = new HashMap<String, Integer>() {{
     //FIXME This is just a small list of cities and WOEIDs.
-    // Full list can be found here https://blog.twitter.com/engineering/en_us/a/2010/woeids-in-twitters-trends.html
+    // Full list of available WOEIDs can be queried here https://developer.twitter.com/en/docs/trends/locations-with-trending-topics/api-reference/get-trends-available
     put("Seattle", 2490383);
     put("Austin", 2357536);
     put("Chicago", 2379574);
@@ -34,6 +34,8 @@ public class SkillData {
     put("New York", 2459115);
     put("Los Angeles", 2442047);
     put("San Francisco", 2487956);
+    put("Denver", 2391279)
+    put("London", 44418);
   }};
 
   public static String getTrendsAsString(Trends trends) {
