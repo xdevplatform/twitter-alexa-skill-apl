@@ -44,7 +44,7 @@ public class TweetHandler implements IntentRequestHandler {
       return getNotEnoughTweetsResponse(handlerInput, searchTerm);
     }
     final String tweetsAsSpeechText = SkillData.getTweetsAsSpeechText(statuses);
-    final String speechText = String.format("Here are some tweets about %s.", searchTerm);
+    final String speechText = String.format("Here are some Tweets about %s.", searchTerm);
 
     if (SkillData.supportsAPL(handlerInput)) {
 
