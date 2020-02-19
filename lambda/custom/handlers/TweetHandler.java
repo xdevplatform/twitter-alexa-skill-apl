@@ -40,7 +40,7 @@ public class TweetHandler implements IntentRequestHandler {
     final String searchTerm = requestHelper.getSlotValue("SearchTerm").get();
 
     final List<Status> statuses = SkillData.getFilteredStatuses(twitterService.getTweetsBySearchTerm(searchTerm));
-    if(statuses.size() < 3) {
+    if (statuses.size() < 3) {
       return getNotEnoughTweetsResponse(handlerInput, searchTerm);
     }
     final String tweetsAsSpeechText = SkillData.getTweetsAsSpeechText(statuses);
@@ -50,49 +50,37 @@ public class TweetHandler implements IntentRequestHandler {
 
       String content = SkillData.getAplDocforTweets();
 
-      Map<String, Object> document = new Gson().fromJson(content,
-          new TypeToken<HashMap<String, Object>>() {}.getType());
+      Map<String, Object> document = new Gson().fromJson(content, new TypeToken<HashMap<String, Object>>() {
+      }.getType());
 
       Map<String, Object> dataSource = new Gson().fromJson(SkillData.getDataSourceForTweets(statuses),
-          new TypeToken<HashMap<String, Object>>() {}.getType());
+          new TypeToken<HashMap<String, Object>>() {
+          }.getType());
 
       List<Command> commandList = new ArrayList<>();
       commandList.add(SpeakItemCommand.builder().withComponentId("tweet1").withDelay(500).build());
-      commandList.add(SetPageCommand.builder().withComponentId("pagerId").withDelay(100).withPosition(Position.RELATIVE).build());
+      commandList.add(
+          SetPageCommand.builder().withComponentId("pagerId").withDelay(100).withPosition(Position.RELATIVE).build());
       commandList.add(SpeakItemCommand.builder().withComponentId("tweet2").withDelay(500).build());
-      commandList.add(SetPageCommand.builder().withComponentId("pagerId").withDelay(100).withPosition(Position.RELATIVE).build());
+      commandList.add(
+          SetPageCommand.builder().withComponentId("pagerId").withDelay(100).withPosition(Position.RELATIVE).build());
       commandList.add(SpeakItemCommand.builder().withComponentId("tweet3").withDelay(500).build());
 
-      SequentialCommand command = SequentialCommand.builder()
-          .withCommands(commandList)
-          .withDelay(300)
-          .build();
+      SequentialCommand command = SequentialCommand.builder().withCommands(commandList).withDelay(300).build();
 
-      return handlerInput.getResponseBuilder()
-          .withSpeech(speechText)
-          .addDirective(RenderDocumentDirective.builder()
-              .withDocument(document)
-              .withDatasources(dataSource)
-              .withToken("pager")
-              .build())
-          .addDirective(ExecuteCommandsDirective.builder()
-              .addCommandsItem(command)
-              .withToken("pager")
-              .build())
-          .build();
+      return handlerInput.getResponseBuilder().withSpeech(speechText)
+          .addDirective(RenderDocumentDirective.builder().withDocument(document).withDatasources(dataSource)
+              .withToken("pager").build())
+          .addDirective(ExecuteCommandsDirective.builder().addCommandsItem(command).withToken("pager").build()).build();
     }
 
-    return handlerInput.getResponseBuilder()
-        .withSpeech(String.format("%s %s", speechText, tweetsAsSpeechText))
-        .build();
+    return handlerInput.getResponseBuilder().withSpeech(String.format("%s %s", speechText, tweetsAsSpeechText)).build();
   }
 
   private Optional<Response> getNotEnoughTweetsResponse(HandlerInput handlerInput, String topic) {
-    String speechText = String.format("There aren't enough tweets about %s. " +
-        "Please trying asking for tweets about a different topic", topic);
-    return handlerInput.getResponseBuilder()
-        .withSpeech(speechText)
-        .build();
+    String speechText = String.format(
+        "There aren't enough Tweets about %s. " + "Please trying asking for Tweets about a different topic", topic);
+    return handlerInput.getResponseBuilder().withSpeech(speechText).build();
   }
 
 }
