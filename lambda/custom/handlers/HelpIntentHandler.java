@@ -15,10 +15,7 @@ public class HelpIntentHandler implements IntentRequestHandler {
 
   @Override
   public Optional<Response> handle(HandlerInput handlerInput, IntentRequest intentRequest) {
-    final String speechText = "I can give you trends for a city or give you tweets about a topic. What would you like?";
-    return handlerInput.getResponseBuilder()
-        .withSpeech(speechText)
-        .withReprompt(speechText)
-        .build();
+    final String speechText = "I can give you trends for a city or give you Tweets about a topic. What would you like?";
+    return handlerInput.getResponseBuilder().withSpeech(speechText).withReprompt(speechText).build();
   }
 }

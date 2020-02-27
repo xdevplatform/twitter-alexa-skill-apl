@@ -23,18 +23,23 @@ import java.util.HashMap;
 
 public class SkillData {
 
-  public static final Map<String, Integer> LOCATION_MAP = new HashMap<String, Integer>() {{
-    //FIXME This is just a small list of cities and WOEIDs.
-    // Full list can be found here https://blog.twitter.com/engineering/en_us/a/2010/woeids-in-twitters-trends.html
-    put("Seattle", 2490383);
-    put("Austin", 2357536);
-    put("Chicago", 2379574);
-    put("Houston", 2424766);
-    put("Orlando", 2466256);
-    put("New York", 2459115);
-    put("Los Angeles", 2442047);
-    put("San Francisco", 2487956);
-  }};
+  public static final Map<String, Integer> LOCATION_MAP = new HashMap<String, Integer>() {
+    {
+      // FIXME This is just a small list of cities and WOEIDs.
+      // Full list of available WOEIDs can be queried here
+      // https://developer.twitter.com/en/docs/trends/locations-with-trending-topics/api-reference/get-trends-available
+      put("Seattle", 2490383);
+      put("Austin", 2357536);
+      put("Chicago", 2379574);
+      put("Houston", 2424766);
+      put("Orlando", 2466256);
+      put("New York", 2459115);
+      put("Los Angeles", 2442047);
+      put("San Francisco", 2487956);
+      put("Denver", 2391279);
+      put("London", 44418);
+    }
+  };
 
   public static String getTrendsAsString(Trends trends) {
     int i = 0;
@@ -83,9 +88,10 @@ public class SkillData {
 
   /*
    * Helper method that checks if the device supports display capabilities
-   * */
+   */
   public static boolean supportsAPL(HandlerInput input) {
-    SupportedInterfaces supportedInterfaces = input.getRequestEnvelope().getContext().getSystem().getDevice().getSupportedInterfaces();
+    SupportedInterfaces supportedInterfaces = input.getRequestEnvelope().getContext().getSystem().getDevice()
+        .getSupportedInterfaces();
     AlexaPresentationAplInterface alexaPresentationAplInterface = supportedInterfaces.getAlexaPresentationAPL();
     return alexaPresentationAplInterface != null;
   }
@@ -96,8 +102,9 @@ public class SkillData {
   }
 
   /*
-   * Excludes tweets text that include http in the text to make it cleaner for Alexa to read
-   * */
+   * Excludes tweets text that include http in the text to make it cleaner for
+   * Alexa to read
+   */
   public static List<Status> getFilteredStatuses(List<Status> statues) {
     List<Status> statusList = new ArrayList<>();
     for (Status status : statues) {
@@ -113,7 +120,8 @@ public class SkillData {
     int i = 0;
     for (Status status : statuses) {
       if (i < 5) {
-        if (null != status.getUser() && null != status.getUser().getLocation() && !status.getUser().getLocation().equals("")) {
+        if (null != status.getUser() && null != status.getUser().getLocation()
+            && !status.getUser().getLocation().equals("")) {
           sb.append(String.format("From %s of %s. %s. ", getCleanedStringForSpeech(status.getUser().getName()),
               getCleanedStringForSpeech(status.getUser().getLocation()), getCleanedStringForSpeech(status.getText())));
         } else {
@@ -127,13 +135,14 @@ public class SkillData {
   }
 
   /*
-   * Helper function that checks if a users location is present to include in Alexa's speech
-   * */
+   * Helper function that checks if a users location is present to include in
+   * Alexa's speech
+   */
   private static String getTweetForSpeechText(Status status) {
-    if (null != status.getUser() && null != status.getUser().getLocation() && !status.getUser().getLocation().equals("")) {
-      return String.format("From %s of %s. %s. ",
-          getCleanedStringForSpeech(status.getUser().getName()), getCleanedStringForSpeech(status.getUser().getLocation()),
-          getCleanedStringForSpeech(status.getText()));
+    if (null != status.getUser() && null != status.getUser().getLocation()
+        && !status.getUser().getLocation().equals("")) {
+      return String.format("From %s of %s. %s. ", getCleanedStringForSpeech(status.getUser().getName()),
+          getCleanedStringForSpeech(status.getUser().getLocation()), getCleanedStringForSpeech(status.getText()));
     } else {
       return String.format("From %s. %s. ", getCleanedStringForSpeech(status.getUser().getName()),
           getCleanedStringForSpeech(status.getText()));
@@ -141,18 +150,18 @@ public class SkillData {
   }
 
   /*
-   * Helper function that removes emojis, whitespace and maintains quotes so Alexa can pronounce just the strings
-   * */
+   * Helper function that removes emojis, whitespace and maintains quotes so Alexa
+   * can pronounce just the strings
+   */
   private static String getCleanedStringForSpeech(String text) {
     String characterFilter = "[^\\p{L}\\p{M}\\p{N}\\p{P}\\p{Z}\\p{Cf}\\p{Cs}\\s]";
-    return text.replace("&", "and").replace("#", "")
-        .replaceAll("\"", "\\\\\"").replaceAll("\\s{2,}", " ")
+    return text.replace("&", "and").replace("#", "").replaceAll("\"", "\\\\\"").replaceAll("\\s{2,}", " ")
         .replaceAll(characterFilter, "").trim();
   }
 
   /*
    * Helper function that replaces large emptyspace with a single line break
-   * */
+   */
   private static String getCleanedTweetText(Status tweet) {
     return tweet.getText().replaceAll("\"", "\\\\\"").replaceAll("\\s{2,}", "\n").trim();
   }

@@ -1,13 +1,13 @@
 # Build An Alexa Skill for Twitter - Tweet Buddy
 
-A sample Alexa skill that brings the Twitter experience to Alexa. For multimodal devices, you can see tweets about a certain topic or trends for a city.
+A sample Alexa skill that brings the Twitter experience to Alexa. For multimodal devices, you can see Tweets about a certain topic or trends for a city.
 
 # Demo Features
 
 This skill demonstrates:
 
 - Use of Twitter APIs - search API and trends API
-- Alexa Presentation Language (APL) pager functionality with speak item commmands
+- Alexa Presentation Language (APL) pager functionality with speak item commands
 
 # AWS Lambda Setup
 
@@ -16,11 +16,11 @@ This skill demonstrates:
 3. Select appropriate role and click create function.
 4. Build a jar file to upload it into the lambda function:
     - Make sure that you replace the Twitter API Keys and tokens in [TwitterService.java](https://github.com/twitterdev/twitter-alexa-skill-apl/tree/master/lambda/custom/util/TwitterService.java) file
-    - Using maven: go to the directory containing pom.xml, and run 'mvn assembly:assembly -DdescriptorId=jar-with-dependencies package'. This will generate a zip file named "tweet-buddy-1.0-jar-with-dependencies.jar" in the target directory. 
+    - Using maven: go to the directory containing pom.xml, and run 'mvn assembly:assembly -DdescriptorId=jar-with-dependencies package'. This will generate a zip file named "tweet-buddy-1.0-jar-with-dependencies.jar" in the target directory.
 5. For Code entry type, select "Upload a .ZIP file" and then upload the jar file created in the previous step from the build directory to Lambda.
 6. Set the Handler as TweetBuddyStreamHandler
-7. Increase the Timeout to 30 seconds and make sure memory is set to atleast 512 MB under Basic Settings.
-8. Click add trigger, and select Alexa skills kit. You will add your skill id (from the alexa skill setup section) here. 
+7. Increase the Timeout to 30 seconds and make sure memory is set to at least 512 MB under Basic Settings.
+8. Click add trigger, and select Alexa skills kit. You will add your skill id (from the alexa skill setup section) here.
 9. Save your settings and copy the ARN from the top right to be used later in the Alexa Skill Setup.
 
 # Alexa Skill Setup
@@ -38,3 +38,5 @@ This skill demonstrates:
     User: "Alexa, open Tweet Buddy"
     User: "What's Trending in Seattle"
     User: "Give me Tweets about Lamar Jackson"
+
+Read more in the [tutorial on DEV.to](https://dev.to/twitterdev/building-an-alexa-skill-for-twitter-using-alexa-presentation-language-1aj0)

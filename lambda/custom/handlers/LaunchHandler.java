@@ -24,38 +24,29 @@ public class LaunchHandler implements LaunchRequestHandler {
 
   @Override
   public Optional<Response> handle(HandlerInput handlerInput, LaunchRequest launchRequest) {
-    final String speechText = "Welcome to Tweet Buddy. " +
-        "To hear what's trending in a city, just ask: What's trending in, followed by the city name. " +
-        "To hear tweets about a topic, just say: Give me tweets about, followed by topic.";
+    final String speechText = "Welcome to Tweet Buddy. "
+        + "To hear what's trending in a city, just ask: What's trending in, followed by the city name. "
+        + "To hear Tweets about a topic, just say: Give me Tweets about, followed by topic.";
 
-    final String repromptText = "To hear what's trending in a city, just ask: What's trending in, followed by the city name. " +
-        "To hear tweets about a topic, just say: Give me tweets about, followed by topic";
+    final String repromptText = "To hear what's trending in a city, just ask: What's trending in, followed by the city name. "
+        + "To hear Tweets about a topic, just say: Give me Tweets about, followed by topic";
 
-    //Device supports screen
+    // Device supports screen
     if (SkillData.supportsAPL(handlerInput)) {
       try {
         String content = SkillData.getFileContentAsString("welcome.json");
 
-        Map<String, Object> document = new Gson().fromJson(content,
-            new TypeToken<HashMap<String, Object>>() {
-            }.getType());
+        Map<String, Object> document = new Gson().fromJson(content, new TypeToken<HashMap<String, Object>>() {
+        }.getType());
 
-        return handlerInput.getResponseBuilder()
-            .withSpeech(speechText)
-            .withReprompt(repromptText)
-            .addDirective(RenderDocumentDirective.builder()
-                .withDocument(document)
-                .build())
-            .build();
+        return handlerInput.getResponseBuilder().withSpeech(speechText).withReprompt(repromptText)
+            .addDirective(RenderDocumentDirective.builder().withDocument(document).build()).build();
       } catch (IOException e) {
         throw new AskSdkException("Unable to read or deserialize APL document", e);
       }
     }
 
-    //Headless device
-    return handlerInput.getResponseBuilder()
-        .withSpeech(speechText)
-        .withReprompt(repromptText)
-        .build();
+    // Headless device
+    return handlerInput.getResponseBuilder().withSpeech(speechText).withReprompt(repromptText).build();
   }
 }
